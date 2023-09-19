@@ -1,27 +1,77 @@
 package co.edu.uniquindio.parcial1.model;
 
 public class Estudiante {
-
     private String nombre;
+    private String apellido;
+    private String fechaNacimiento;
     private int edad;
     private String correo;
     private int semestre;
+    private double estatura;
     private double nota1;
     private double nota2;
     private double nota3;
+    private double nota4;
+    private double nota5;
+
+
     /*Constructor*/
-    public Estudiante(){
 
-    }
-
-    public Estudiante(String nombre, int edad, String correo, int semestre, double nota1, double nota2, double nota3){
+    public Estudiante(String nombre, String apellido, String fechaNacimiento, int edad,
+                      String correo, int semestre, double estatura, double nota1, double nota2,
+                      double nota3, double nota4, double nota5) {
         this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
         this.edad = edad;
         this.correo = correo;
         this.semestre = semestre;
+        this.estatura = estatura;
         this.nota1 = nota1;
         this.nota2 = nota2;
         this.nota3 = nota3;
+        this.nota4 = nota4;
+        this.nota5 = nota5;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public double getEstatura() {
+        return estatura;
+    }
+
+    public void setEstatura(double estatura) {
+        this.estatura = estatura;
+    }
+
+    public double getNota4() {
+        return nota4;
+    }
+
+    public void setNota4(double nota4) {
+        this.nota4 = nota4;
+    }
+
+    public double getNota5() {
+        return nota5;
+    }
+
+    public void setNota5(double nota5) {
+        this.nota5 = nota5;
     }
 
     public String getNombre() {
@@ -80,11 +130,28 @@ public class Estudiante {
         this.nota3 = nota3;
     }
 
-    public static double promediarNotas(double nota1, double nota2, double nota3) {
-        return (nota1 + nota2 + nota3) / 3;
+    public double promedioNotas(){
+        return (getNota1() + getNota2() + getNota3() + getNota4() + getNota5())/5;
     }
 
-    public double promedioNotas(){
-        return (getNota1() + getNota2() + getNota3())/3;
+    public double notaMayor(){
+
+        if(getNota1() >= getNota2() && getNota1() >= getNota3() && getNota1() >= getNota4() && getNota1() >= getNota5()){
+            return getNota1();
+        }else{
+            if(getNota2() >= getNota3() && getNota2() >= getNota4() && getNota2() >= getNota5()){
+                return getNota2();
+            }else{
+                if(getNota3() >= getNota4() && getNota3() >= getNota5()){
+                    return getNota3();
+                }else{
+                    if(getNota4() >= getNota5()){
+                        return getNota4();
+                    }else{
+                        return getNota5();
+                    }
+                }
+            }
+        }
     }
 }

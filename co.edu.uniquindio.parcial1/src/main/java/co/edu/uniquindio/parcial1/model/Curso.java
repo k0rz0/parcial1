@@ -7,18 +7,46 @@ public class Curso {
     private String grupo;
     private int creditos;
     private String jornada;
+    private String programa;
+    private String facultad;
     private Estudiante estudiante1;
     private Estudiante estudiante2;
     private Estudiante estudiante3;
     private Docente docente;
+    private Docente docenteAuxiliar;
 
 
-    public Curso(String nombre, int semestre, String grupo, int creditos, String jornada) {
+    public Curso(String nombre, int semestre, String grupo, int creditos, String jornada, String programa, String facultad) {
         this.nombre = nombre;
         this.semestre = semestre;
         this.grupo = grupo;
         this.creditos = creditos;
-        this.jornada = jornada;
+        this.programa = programa;
+        this.facultad = facultad;
+    }
+
+    public Docente getDocenteAuxiliar() {
+        return docenteAuxiliar;
+    }
+
+    public void setDocenteAuxiliar(Docente docenteAuxiliar) {
+        this.docenteAuxiliar = docenteAuxiliar;
+    }
+
+    public String getPrograma() {
+        return programa;
+    }
+
+    public void setPrograma(String programa) {
+        this.programa = programa;
+    }
+
+    public String getFacultad() {
+        return facultad;
+    }
+
+    public void setFacultad(String facultad) {
+        this.facultad = facultad;
     }
 
     public String getNombre() {
@@ -94,9 +122,47 @@ public class Curso {
     }
 
     public double obtenerPromedioCurso(){
-        double promedio = (getEstudiante1().promedioNotas() + getEstudiante2().promedioNotas() + getEstudiante3().promedioNotas())/3;
+        return (getEstudiante1().promedioNotas() + getEstudiante2().promedioNotas() + getEstudiante3().promedioNotas())/3;
 
-        return  promedio;
+    }
+
+    public Estudiante obtenerMayorEstatura(){
+
+        if (estudiante1.getEstatura() > estudiante2.getEstatura()){
+            if (estudiante1.getEstatura() > estudiante3.getEstatura()){
+                return estudiante1;
+            }else{
+                return estudiante3;
+            }
+        }else{
+            if (estudiante2.getEstatura() > estudiante3.getEstatura()){
+                return estudiante2;
+            }else{
+                return estudiante3;
+            }
+        }
+
+    }
+
+    public String nota5Mayor (){
+        String estudiantes = "";
+
+        if (estudiante1.getNota5() > 4.0){
+
+            estudiantes = estudiantes + estudiante1.getNombre() + " ";
+
+        }
+        if (estudiante2.getNota5() > 4.0){
+
+            estudiantes = estudiantes + estudiante2.getNombre() + " ";
+
+        }
+        if (estudiante3.getNota5() > 4.0){
+
+            estudiantes = estudiantes + estudiante3.getNombre() + " ";
+
+        }
+        return estudiantes;
     }
 
 }

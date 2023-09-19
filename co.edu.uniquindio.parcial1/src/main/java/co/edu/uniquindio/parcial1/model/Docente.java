@@ -3,13 +3,23 @@ package co.edu.uniquindio.parcial1.model;
 public class Docente {
 
     private String nombre;
+    private String apellido;
     private int edad;
     private String correo;
 
-    public Docente(String nombre, int edad, String correo){
+    public Docente(String nombre, int edad, String correo, String apellido){
         this.nombre = nombre;
         this.edad = edad;
         this.correo = correo;
+        this.apellido = apellido;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getNombre() {
